@@ -6,28 +6,28 @@ using System.Threading.Tasks;
 
 namespace CS3321_Project {
     public class Database {
-        private static Dictionary<string, User> dictAccount = new Dictionary<string, User>();
+        private static Dictionary<string, User> _dictAccount = new Dictionary<string, User>();
 
         public Database()
         {
-            loadDatabase();
+            LoadDatabase();
         }
 
-        public void loadDatabase()
+        public void LoadDatabase()
         {
             //For English Class, Professor Jason, total Student = 5, total Assignments = 3
             Professor pro1 = new Professor("2111", "999", "Jason", "Statham");
             ProfessorCourse eng = new ProfessorCourse("English");
             ProfessorCourse chem = new ProfessorCourse("Chemistry");
-            pro1.addCourse(eng);
-            pro1.addCourse(chem);
+            pro1.AddCourse(eng);
+            pro1.AddCourse(chem);
 
             //Pro2
             Professor pro2 = new Professor("2112", "999", "Henry", "Ford");
             ProfessorCourse math = new ProfessorCourse("Math");
             ProfessorCourse biology = new ProfessorCourse("Biology");
-            pro2.addCourse(biology);
-            pro2.addCourse(math);
+            pro2.AddCourse(biology);
+            pro2.AddCourse(math);
 
             int totalStudent = 5;
             Student[] allStudents = new Student[totalStudent];
@@ -45,91 +45,85 @@ namespace CS3321_Project {
             allStudents[4] = s5;
 
             //English Class
-            for (int i = 0; i < allStudents.Length; i++)
+            foreach (var t in allStudents)
             {
-                pro1.getACourse(eng.getCourseName()).addStudent(allStudents[i].getName(), allStudents[i].getID());
-                allStudents[i].addCourse(new StudentCourse("English", "Jason Statham"));
-                allStudents[i].getACourse("English").addAssignment(new Assignment("Homework1", 0));
-                allStudents[i].getACourse("English").addAssignment(new Assignment("Homework2", 0));
-                allStudents[i].getACourse("English").addAssignment(new Assignment("Homework3", 0));
-                allStudents[i].getACourse("English").addAssignment(new Assignment("Midterm Review", 0));
-                allStudents[i].getACourse("English").addAssignment(new Assignment("Midterm Exam", 0));
+                pro1.GetACourse(eng.GetCourseName()).AddStudent(t.GetName(), t.GetId());
+                t.AddCourse(new StudentCourse("English", "Jason Statham"));
+                t.GetACourse("English").AddAssignment(new Assignment("Homework1", 0));
+                t.GetACourse("English").AddAssignment(new Assignment("Homework2", 0));
+                t.GetACourse("English").AddAssignment(new Assignment("Homework3", 0));
+                t.GetACourse("English").AddAssignment(new Assignment("Midterm Review", 0));
+                t.GetACourse("English").AddAssignment(new Assignment("Midterm Exam", 0));
 
-                dictAccount.Add(allStudents[i].getID(), allStudents[i]);
+                _dictAccount.Add(t.GetId(), t);
             }
 
             //Chem
-            for (int i = 0; i < allStudents.Length - 3; i++)
+            for (var i = 0; i < allStudents.Length - 3; i++)
             {
-                pro1.getACourse(chem.getCourseName()).addStudent(allStudents[i].getName(), allStudents[i].getID());
-                allStudents[i].addCourse(new StudentCourse("Chemistry", "Jason Statham"));
-                allStudents[i].getACourse("Chemistry").addAssignment(new Assignment("Lab Practice", 0));
-                allStudents[i].getACourse("Chemistry").addAssignment(new Assignment("Exam 1", 0));
+                pro1.GetACourse(chem.GetCourseName()).AddStudent(allStudents[i].GetName(), allStudents[i].GetId());
+                allStudents[i].AddCourse(new StudentCourse("Chemistry", "Jason Statham"));
+                allStudents[i].GetACourse("Chemistry").AddAssignment(new Assignment("Lab Practice", 0));
+                allStudents[i].GetACourse("Chemistry").AddAssignment(new Assignment("Exam 1", 0));
             }
 
-            pro1.getACourse(eng.getCourseName()).addAssignment(new Assignment("Homework1"));
-            pro1.getACourse(eng.getCourseName()).addAssignment(new Assignment("Homework2"));
-            pro1.getACourse(eng.getCourseName()).addAssignment(new Assignment("Homework3"));
-            pro1.getACourse(eng.getCourseName()).addAssignment(new Assignment("Midterm Review"));
-            pro1.getACourse(eng.getCourseName()).addAssignment(new Assignment("Midterm Exam"));
+            pro1.GetACourse(eng.GetCourseName()).AddAssignment(new Assignment("Homework1"));
+            pro1.GetACourse(eng.GetCourseName()).AddAssignment(new Assignment("Homework2"));
+            pro1.GetACourse(eng.GetCourseName()).AddAssignment(new Assignment("Homework3"));
+            pro1.GetACourse(eng.GetCourseName()).AddAssignment(new Assignment("Midterm Review"));
+            pro1.GetACourse(eng.GetCourseName()).AddAssignment(new Assignment("Midterm Exam"));
 
-            pro1.getACourse(chem.getCourseName()).addAssignment(new Assignment("Lab Practice"));
-            pro1.getACourse(chem.getCourseName()).addAssignment(new Assignment("Exam 1"));
+            pro1.GetACourse(chem.GetCourseName()).AddAssignment(new Assignment("Lab Practice"));
+            pro1.GetACourse(chem.GetCourseName()).AddAssignment(new Assignment("Exam 1"));
 
-            dictAccount.Add(pro1.getID(), pro1);
+            _dictAccount.Add(pro1.GetId(), pro1);
 
             //Professor 2
-            for (int i = 2; i < allStudents.Length; i++)
+            for (var i = 2; i < allStudents.Length; i++)
             {
-                pro2.getACourse(math.getCourseName()).addStudent(allStudents[i].getName(), allStudents[i].getID());
-                allStudents[i].addCourse(new StudentCourse("Math", "Henry Ford"));
-                allStudents[i].getACourse("Math").addAssignment(new Assignment("Presentation", 0));
-                allStudents[i].getACourse("Math").addAssignment(new Assignment("Take home quiz", 0));
-                allStudents[i].getACourse("Math").addAssignment(new Assignment("Essay", 0));
+                pro2.GetACourse(math.GetCourseName()).AddStudent(allStudents[i].GetName(), allStudents[i].GetId());
+                allStudents[i].AddCourse(new StudentCourse("Math", "Henry Ford"));
+                allStudents[i].GetACourse("Math").AddAssignment(new Assignment("Presentation", 0));
+                allStudents[i].GetACourse("Math").AddAssignment(new Assignment("Take home quiz", 0));
+                allStudents[i].GetACourse("Math").AddAssignment(new Assignment("Essay", 0));
             }
 
             //Biology
 
-            for (int i = 1; i < allStudents.Length - 1; i++)
+            for (var i = 1; i < allStudents.Length - 1; i++)
             {
-                pro2.getACourse(biology.getCourseName()).addStudent(allStudents[i].getName(), allStudents[i].getID());
-                allStudents[i].addCourse(new StudentCourse("Biology", "Henry Ford"));
-                allStudents[i].getACourse("Biology").addAssignment(new Assignment("Quiz 1", 0));
-                allStudents[i].getACourse("Biology").addAssignment(new Assignment("Project", 0));
+                pro2.GetACourse(biology.GetCourseName()).AddStudent(allStudents[i].GetName(), allStudents[i].GetId());
+                allStudents[i].AddCourse(new StudentCourse("Biology", "Henry Ford"));
+                allStudents[i].GetACourse("Biology").AddAssignment(new Assignment("Quiz 1", 0));
+                allStudents[i].GetACourse("Biology").AddAssignment(new Assignment("Project", 0));
             }
 
-            pro2.getACourse(math.getCourseName()).addAssignment(new Assignment("Presentation"));
-            pro2.getACourse(math.getCourseName()).addAssignment(new Assignment("Take home quiz"));
-            pro2.getACourse(math.getCourseName()).addAssignment(new Assignment("Essay"));
+            pro2.GetACourse(math.GetCourseName()).AddAssignment(new Assignment("Presentation"));
+            pro2.GetACourse(math.GetCourseName()).AddAssignment(new Assignment("Take home quiz"));
+            pro2.GetACourse(math.GetCourseName()).AddAssignment(new Assignment("Essay"));
 
-            pro2.getACourse(biology.getCourseName()).addAssignment(new Assignment("Quiz 1"));
-            pro2.getACourse(biology.getCourseName()).addAssignment(new Assignment("Project"));
+            pro2.GetACourse(biology.GetCourseName()).AddAssignment(new Assignment("Quiz 1"));
+            pro2.GetACourse(biology.GetCourseName()).AddAssignment(new Assignment("Project"));
 
-            dictAccount.Add(pro2.getID(), pro2);
+            _dictAccount.Add(pro2.GetId(), pro2);
 
             Console.WriteLine("Database was loaded successfully!");
         }
 
-        public bool checkUserLogin(string userID, string password)
+        public bool CheckUserLogin(string userId, string password)
         {
-            if (dictAccount.ContainsKey(userID))
+            if (_dictAccount.ContainsKey(userId))
             {
-                return dictAccount[userID].getPassword().Equals(password, StringComparison.OrdinalIgnoreCase);
+                return _dictAccount[userId].GetPassword().Equals(password, StringComparison.OrdinalIgnoreCase);
             } else
             {
                 return false;
             }
         }
 
-        public User getUserInformation(string userID)
+        public User GetUserInformation(string userId)
         {
-            if (dictAccount.ContainsKey(userID))
-            {
-                return dictAccount[userID];
-            } else
-            {
-                return null;
-            }
+            return _dictAccount.ContainsKey(userId) ? _dictAccount[userId] : null;
         }
 
     }

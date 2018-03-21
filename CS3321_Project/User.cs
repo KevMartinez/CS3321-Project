@@ -9,37 +9,37 @@ namespace CS3321_Project
 {
     public abstract class User
     {
-        private string userID, password, name, typeOfUser;
+        private string _userId, _password, _name, _typeOfUser;
 
-        public User(string userID, string password, string name, string type) //constructor 
+        public User(string userId, string password, string name, string type) //constructor 
         {
-            this.userID = userID;
-            this.password = password;
-            this.name = name;
-            this.typeOfUser = type;
+            this._userId = userId;
+            this._password = password;
+            this._name = name;
+            this._typeOfUser = type;
         }
 
-        public string getName()
+        public string GetName()
         {
-            return this.name;
+            return this._name;
         }
 
-        public string getPassword()
+        public string GetPassword()
         {
-            return this.password;
+            return this._password;
         }
 
-        public string getID()
+        public string GetId()
         {
-            return this.userID;
+            return this._userId;
         }
 
-        public string getTypeOfUser()
+        public string GetTypeOfUser()
         {
-            return this.typeOfUser;
+            return this._typeOfUser;
         }
 
-        public abstract ArrayList getAllCourseAsAList();
+        public abstract ArrayList GetAllCourseAsAList();
         
     }
 }

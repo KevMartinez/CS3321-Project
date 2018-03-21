@@ -9,38 +9,34 @@ namespace CS3321_Project
 {
     class Student : User
     {
-        public Student(string userID, string password, string name, string type) : base(userID, password, name, "Student") {}
-        private Dictionary<string, StudentCourse> dictCourses = new Dictionary<string, StudentCourse>();
+        public Student(string userId, string password, string name, string type) : base(userId, password, name, "Student") {}
+        private Dictionary<string, StudentCourse> _dictCourses = new Dictionary<string, StudentCourse>();
 
-        public void addCourse(StudentCourse course)
+        public void AddCourse(StudentCourse course)
         {
-            dictCourses.Add(course.getCourseName(), course);
+            _dictCourses.Add(course.GetCourseName(), course);
         }
 
-        public Dictionary<string, StudentCourse> getAllCourses()
+        public Dictionary<string, StudentCourse> GetAllCourses()
         {
-            Dictionary<string, StudentCourse> returnDict = new Dictionary<string, StudentCourse>();
-            foreach (string name in dictCourses.Keys)
+            var returnDict = new Dictionary<string, StudentCourse>();
+            foreach (var name in _dictCourses.Keys)
             {
-                returnDict.Add(name, dictCourses[name]);
+                returnDict.Add(name, _dictCourses[name]);
             }
 
             return returnDict;
         }
 
-        public StudentCourse getACourse(string course)
+        public StudentCourse GetACourse(string course)
         {
-            if (dictCourses.ContainsKey(course))
-            {
-                return dictCourses[course];
-            }
-            return null;
+            return _dictCourses.ContainsKey(course) ? _dictCourses[course] : null;
         }
 
-        public override ArrayList getAllCourseAsAList()
+        public override ArrayList GetAllCourseAsAList()
         {
             ArrayList returnArray = new ArrayList();
-            foreach (StudentCourse item in dictCourses.Values) {
+            foreach (var item in _dictCourses.Values) {
                 returnArray.Add(item);
             }
             return returnArray;

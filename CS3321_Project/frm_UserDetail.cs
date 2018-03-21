@@ -11,31 +11,31 @@ using System.Collections;
 
 namespace CS3321_Project
 {
-    public partial class  frm_UserDetail : Form
+    public partial class  FrmUserDetail : Form
     {
-        public Database data;
-        public string userID;
-        private User user;
-        private ArrayList allCourses, allAssignments;
+        public Database Data;
+        public string UserId;
+        private User _user;
+        private ArrayList _allCourses, _allAssignments;
 
-        public frm_UserDetail()
+        public FrmUserDetail()
         {
             InitializeComponent();
         }
 
-        private void frm_UserDetail_Load(object sender, EventArgs e)
+        private void Frm_UserDetail_Load(object sender, EventArgs e)
         {
-            if (userID != null)
+            if (UserId != null)
             {
-                user = data.getUserInformation(userID);
-                lblName.Text = user.getTypeOfUser() + ": " + user.getName();
-                lblStudentID.Text = "ID: " + user.getID();
-                allCourses = user.getAllCourseAsAList();
+                _user = Data.GetUserInformation(UserId);
+                lblName.Text = _user.GetTypeOfUser() + @": " + _user.GetName();
+                lblStudentID.Text = @"ID: " + _user.GetId();
+                _allCourses = _user.GetAllCourseAsAList();
 
-                for (int i = 0; i < allCourses.Count; i++)
+                foreach (var t in _allCourses)
                 {
-                    StudentCourse stu = (StudentCourse)allCourses[i];
-                    lstCoursesList.Items.Add(stu.getCourseName());
+                    StudentCourse stu = (StudentCourse)t;
+                    lstCoursesList.Items.Add(stu.GetCourseName());
                 }
 
             }
@@ -43,19 +43,19 @@ namespace CS3321_Project
             
         }
 
-        private void lstCoursesList_SelectedIndexChanged(object sender, EventArgs e)
+        private void LstCoursesList_SelectedIndexChanged(object sender, EventArgs e)
         {
             lstAssignments.Items.Clear();
             lstGrades.Items.Clear();
-            StudentCourse selectedCourse = (StudentCourse)allCourses[lstCoursesList.SelectedIndex];
-            allAssignments = selectedCourse.getAllAssignmentsAsAList();
-            lblProfessor.Text = "Professor: " + selectedCourse.getProfessorName();
+            StudentCourse selectedCourse = (StudentCourse)_allCourses[lstCoursesList.SelectedIndex];
+            _allAssignments = selectedCourse.GetAllAssignmentsAsAList();
+            lblProfessor.Text = @"Professor: " + selectedCourse.GetProfessorName();
 
-            for (int i = 0; i < allAssignments.Count; i++)
+            foreach (var t in _allAssignments)
             {
-                Assignment assign = (Assignment)allAssignments[i];
-                lstAssignments.Items.Add(assign.getName() + "\t\t");
-                lstGrades.Items.Add(assign.getGrade());
+                Assignment assign = (Assignment)t;
+                lstAssignments.Items.Add(assign.GetName() + "\t\t");
+                lstGrades.Items.Add(assign.GetGrade());
             }
 
         }

@@ -9,71 +9,61 @@ namespace CS3321_Project
 {
     class Professor : User
     {
-        private Dictionary<string, ProfessorCourse> dictCourses = new Dictionary<string, ProfessorCourse>();
+        private Dictionary<string, ProfessorCourse> _dictCourses = new Dictionary<string, ProfessorCourse>();
 
-        public Professor(string userID, string password, string name, string type) : base(userID, password, name, "Professor")
+        public Professor(string userId, string password, string name, string type) : base(userId, password, name, "Professor")
         {
         }
 
-        public void addCourse(ProfessorCourse course)
+        public void AddCourse(ProfessorCourse course)
         {
-            dictCourses.Add(course.getCourseName(), course);
+            _dictCourses.Add(course.GetCourseName(), course);
         }
 
-        public Dictionary<string, ProfessorCourse> getAllCourses()
+        public Dictionary<string, ProfessorCourse> GetAllCourses()
         {
             Dictionary<string, ProfessorCourse> returnDict = new Dictionary<string, ProfessorCourse>();
-            foreach (string name in dictCourses.Keys)
+            foreach (string name in _dictCourses.Keys)
             {
-                returnDict.Add(name, dictCourses[name]);
+                returnDict.Add(name, _dictCourses[name]);
             }
 
             return returnDict;
         }
 
-        public ProfessorCourse getACourse(string course)
+        public ProfessorCourse GetACourse(string course)
         {
-            if (dictCourses.ContainsKey(course))
-            {
-                return dictCourses[course];
-            }
-            return null;
+            return _dictCourses.ContainsKey(course) ? _dictCourses[course] : null;
         }
 
-        public bool checkCourseExist(string course)
+        public bool CheckCourseExist(string course)
         {
-            if (dictCourses.ContainsKey(course))
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
+            return _dictCourses.ContainsKey(course);
         }
 
-        public override ArrayList getAllCourseAsAList()
+        public override ArrayList GetAllCourseAsAList()
         {
-            ArrayList returnArray = new ArrayList();
-            foreach (ProfessorCourse item in dictCourses.Values)
+            var returnArray = new ArrayList();
+            foreach (var item in _dictCourses.Values)
             {
                 returnArray.Add(item);
             }
             return returnArray;
         }
 
-        public ArrayList getAllStudentsOfACourse(string course, string IDorNAME)
+        public ArrayList GetAllStudentsOfACourse(string course, string dorName)
         {
-            ArrayList returnArr = new ArrayList();
-            if (IDorNAME.Equals("id", StringComparison.OrdinalIgnoreCase))
+            var returnArr = new ArrayList();
+            if (dorName.Equals("id", StringComparison.OrdinalIgnoreCase))
             {
-                foreach (string userid in dictCourses[course].getAllStudents().Keys)
+                foreach (var userid in _dictCourses[course].GetAllStudents().Keys)
                 {
                     returnArr.Add(userid);
                 }
                 return returnArr;
             } else
             {
-                foreach (string name in dictCourses[course].getAllStudents().Values)
+                foreach (var name in _dictCourses[course].GetAllStudents().Values)
                 {
                     returnArr.Add(name);
                 }
