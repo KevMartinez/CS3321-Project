@@ -9,43 +9,43 @@ namespace CS3321_Project
     class Assignment
     {
 
-        private string assignmentName;
-        private double assignmentGrade;
+        private string _assignmentName;
+        private double _assignmentGrade;
 
         public Assignment(string name)
         {
-            this.setAssignment(name, -1);
+            this.SetAssignment(name, -1);
         }
 
         public Assignment (string name, double grade)
         {
-            this.setAssignment(name, grade);
+            this.SetAssignment(name, grade);
         }
 
-        public void setAssignment(string name, double grade)
+        public void SetAssignment(string name, double grade)
         {
-            this.assignmentName = name;
-            this.assignmentGrade = grade;
+            this._assignmentName = name;
+            this._assignmentGrade = grade;
         }
 
-        public string getName()
+        public string GetName()
         {
-            return this.assignmentName;
+            return this._assignmentName;
         }
 
-        public double getGrade()
+        public double GetGrade()
         {
-            return this.assignmentGrade;
+            return this._assignmentGrade;
         }
 
-        public void setGrade(double grade)
+        public void SetGrade(double grade)
         {
-            this.assignmentGrade = grade;
+            this._assignmentGrade = grade;
         }
 
         public override string ToString()
         {
-            return "Assignment: " + getName() + " - Grade: " + getGrade();
+            return "Assignment: " + GetName() + " - Grade: " + GetGrade();
         }
     }
 

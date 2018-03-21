@@ -1,6 +1,6 @@
 ﻿namespace CS3321_Project
 {
-    partial class frm_UserDetail
+    partial class FrmUserDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -70,7 +70,7 @@
             this.lstCoursesList.Name = "lstCoursesList";
             this.lstCoursesList.Size = new System.Drawing.Size(242, 118);
             this.lstCoursesList.TabIndex = 2;
-            this.lstCoursesList.SelectedIndexChanged += new System.EventHandler(this.lstCoursesList_SelectedIndexChanged);
+            this.lstCoursesList.SelectedIndexChanged += new System.EventHandler(this.LstCoursesList_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -153,10 +153,10 @@
             this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "frm_UserDetail";
+            this.Name = "FrmUserDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detail";
-            this.Load += new System.EventHandler(this.frm_UserDetail_Load);
+            this.Load += new System.EventHandler(this.Frm_UserDetail_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

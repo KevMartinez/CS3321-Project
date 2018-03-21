@@ -9,60 +9,60 @@ namespace CS3321_Project
 {
     class Course
     {
-        private string courseName;
-        Dictionary<string, Assignment> dictAssignment = new Dictionary<string, Assignment>();
+        private string _courseName;
+        Dictionary<string, Assignment> _dictAssignment = new Dictionary<string, Assignment>();
 
         public Course(string courseName)
         {
-            this.courseName = courseName;
+            this._courseName = courseName;
         }
 
-        public string getCourseName()
+        public string GetCourseName()
         {
-            return this.courseName;
+            return this._courseName;
         }
 
-        public void addAssignment(Assignment assign)
+        public void AddAssignment(Assignment assign)
         {
-            dictAssignment.Add(assign.getName(), assign);
+            _dictAssignment.Add(assign.GetName(), assign);
         }
 
-        public bool updateGrade(String name, double grade)
+        public bool UpdateGrade(String name, double grade)
         {
-            if (dictAssignment.ContainsKey(name))
+            if (_dictAssignment.ContainsKey(name))
             {
-                dictAssignment[name].setGrade(grade);
+                _dictAssignment[name].SetGrade(grade);
                 return true;
             }
             return false;
         }
 
-        public Dictionary<string, Assignment> getAllAssignment()
+        public Dictionary<string, Assignment> GetAllAssignment()
         {
             Dictionary<string, Assignment> returnDict = new Dictionary<string, Assignment>();
-            foreach (string name in dictAssignment.Keys)
+            foreach (string name in _dictAssignment.Keys)
             {
-                returnDict.Add(name, dictAssignment[name]);
+                returnDict.Add(name, _dictAssignment[name]);
             }
 
             return returnDict;
         }
 
-        public ArrayList getAllAssignmentsAsAList()
+        public ArrayList GetAllAssignmentsAsAList()
         {
             ArrayList returnArray = new ArrayList();
-            foreach (Assignment item in dictAssignment.Values)
+            foreach (Assignment item in _dictAssignment.Values)
             {
                 returnArray.Add(item);
             }
             return returnArray;
         }
 
-        public Assignment getOneAssignment(string name)
+        public Assignment GetOneAssignment(string name)
         {
-            if (dictAssignment.ContainsKey(name))
+            if (_dictAssignment.ContainsKey(name))
             {
-                return dictAssignment[name];
+                return _dictAssignment[name];
             }
             return null;
         }

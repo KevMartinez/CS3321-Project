@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace CS3321_Project
 {
-    public partial class frm_Main : Form
+    public partial class FrmMain : Form
     {
-        public static Database data = new Database();
-        public frm_Main()
+        public static Database Data = new Database();
+        public FrmMain()
         {
             InitializeComponent();
             
@@ -23,20 +23,22 @@ namespace CS3321_Project
         {
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
-            if (data.checkUserLogin(txtUser.Text, txtPassword.Text))
+            if (Data.CheckUserLogin(txtUser.Text, txtPassword.Text))
             {
-                MessageBox.Show("Login Successfully");
-                frm_UserDetail frm = new frm_UserDetail();
-                frm.data = data;
-                frm.userID = txtUser.Text;
+                MessageBox.Show(@"Login Successfully");
+                FrmUserDetail frm = new FrmUserDetail
+                {
+                    Data = Data,
+                    UserId = txtUser.Text
+                };
                 this.Hide();
                 frm.ShowDialog();
                 
             } else
             {
-                MessageBox.Show("Login Failed");
+                MessageBox.Show(@"Login Failed");
             } 
         }
     }

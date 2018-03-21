@@ -9,23 +9,23 @@ namespace CS3321_Project
 {
     class ProfessorCourse : Course
     {
-        private Dictionary<string, string> dictStudent = new Dictionary<string, string>();
+        private Dictionary<string, string> _dictStudent = new Dictionary<string, string>();
 
         public ProfessorCourse(string courseName) : base(courseName)
         {
         }
 
-        public void addStudent(string userID, string name)
+        public void AddStudent(string userId, string name)
         {
-            dictStudent.Add(userID, name);
+            _dictStudent.Add(userId, name);
         }
 
-        public Dictionary<string, string> getAllStudents()
+        public Dictionary<string, string> GetAllStudents()
         {
             Dictionary<string, string> returnDict = new Dictionary<string, string>();
-            foreach (string userID in dictStudent.Keys)
+            foreach (string userId in _dictStudent.Keys)
             {
-                returnDict.Add(userID, dictStudent[userID]);
+                returnDict.Add(userId, _dictStudent[userId]);
             }
 
             return returnDict;
