@@ -4,16 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace CS3321_Project
 {
-    class Course
+    public class Course
     {
+<<<<<<< HEAD
         private string _courseName;
         Dictionary<string, Assignment> _dictAssignment = new Dictionary<string, Assignment>();
+=======
+        [JsonProperty("courses")]
+        public Dictionary<string, CourseInfo> allCourses { get; set; }
+>>>>>>> pr/5
 
-        public Course(string courseName)
+        public CourseInfo getInfoOfACourse(string course_id)
         {
+<<<<<<< HEAD
             this._courseName = courseName;
         }
 
@@ -56,8 +64,13 @@ namespace CS3321_Project
                 returnArray.Add(item);
             }
             return returnArray;
+=======
+            return allCourses[course_id];
+>>>>>>> pr/5
         }
+    }
 
+<<<<<<< HEAD
         public Assignment GetOneAssignment(string name)
         {
             if (_dictAssignment.ContainsKey(name))
@@ -66,6 +79,27 @@ namespace CS3321_Project
             }
             return null;
         }
+=======
+    public class CourseInfo
+    {
+        [JsonProperty("course_id")]
+        public string id { get; set; }
+        [JsonProperty("name")]
+        public string name { get; set; }
+        [JsonProperty("professor")]
+        public string professor { get; set; }
+        [JsonProperty("type")]
+        public string type { get; set; }
+        [JsonProperty("students")]
+        public Dictionary<string, enrolledCourseInfo> allEnrolledStudent { get; set; }
+    }
+>>>>>>> pr/5
 
+    public class enrolledStudentInfo
+    {
+        [JsonProperty("studentID")]
+        public string id { get; set; }
+        [JsonProperty("AssignmentID")]
+        public ArrayList assignmentIDList { get; set; }
     }
 }

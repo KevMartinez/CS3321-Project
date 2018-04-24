@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace CS3321_Project
 {
-    class Assignment
     {
 
         private string _assignmentName;

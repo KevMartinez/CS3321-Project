@@ -1,10 +1,6 @@
 ﻿namespace CS3321_Project
 {
-<<<<<<< HEAD
-    partial class FrmMain
-=======
-    partial class frmProfessorDetail
->>>>>>> pr/5
+    partial class frm_Main
     {
         /// <summary>
         /// Required designer variable.
@@ -32,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.txtUser = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // frmProfessorDetail
+            // txtUser
             // 
-<<<<<<< HEAD
             this.txtUser.Location = new System.Drawing.Point(108, 13);
-            this.txtUser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUser.Margin = new System.Windows.Forms.Padding(4);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(193, 26);
             this.txtUser.TabIndex = 0;
@@ -79,31 +79,37 @@
             this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
-=======
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
->>>>>>> pr/5
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 427);
-            this.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClientSize = new System.Drawing.Size(319, 122);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtUser);
+            this.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-<<<<<<< HEAD
-            this.Name = "FrmMain";
-=======
-            this.Name = "frmProfessorDetail";
->>>>>>> pr/5
+            this.Name = "frm_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Professor Information";
-            this.Load += new System.EventHandler(this.frmProfessorDetail_Load);
+            this.Text = "Login";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.TextBox txtUser;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Button btnLogin;
     }
 }
+

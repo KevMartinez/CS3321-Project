@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CS3321_Project {
+<<<<<<< HEAD
     public class Database {
         private static Dictionary<string, User> _dictAccount = new Dictionary<string, User>();
 
@@ -125,6 +127,11 @@ namespace CS3321_Project {
         {
             return _dictAccount.ContainsKey(userId) ? _dictAccount[userId] : null;
         }
+=======
+    
+>>>>>>> pr/5
 
+    public class Database {
+        
     }
 }
